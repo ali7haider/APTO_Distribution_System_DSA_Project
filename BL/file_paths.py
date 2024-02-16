@@ -18,3 +18,5 @@ class FilePaths:
         self.ProductsInfo = os.path.join(data_directory, "ProductsInfo.csv")
         self.ManagerInfo = os.path.join(data_directory, "ManagerInfo.csv")
         self.CategoriesList = os.path.join(data_directory, "CategoriesList.csv")
+        self.SalesPerDate = os.path.join(data_directory, "SalesPerDate.csv")
+        self.All = os.path.join(data_directory, "All.csv")

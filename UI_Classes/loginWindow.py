@@ -12,7 +12,7 @@ from DL.ManagerDL import managerDL
 from DL.CategoryDL import categoryDL
 from DL.ProductDL import productDL
 from BL.file_paths import FilePaths
-
+from UI_Classes.adminWindow import AdminWindow
 class LoginWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(LoginWindow, self).__init__()
@@ -41,3 +41,7 @@ class LoginWindow(QMainWindow, Ui_MainWindow):
         role = self.cmbRole.currentText()
         user = credential(userName, password, role)
         login = credential(userName, password, role)
+        if(role == "Admin"):
+            # if(adminDL().searchAdmin(login)):
+            self.newq = AdminWindow()
+            self.newq.show()
