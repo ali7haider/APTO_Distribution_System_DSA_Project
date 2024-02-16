@@ -1,0 +1,35 @@
+<RCC>
+  <qresource prefix="Icons">
+    <file>Icons/icons8-close-50.png</file>
+    <file>Icons/icons8-task-completed-24.png</file>
+    <file>Icons/order done.png</file>
+    <file>Icons/shopkeeper.png</file>
+    <file>Icons/logoApto-removebg-preview.png</file>
+    <file>Icons/Vehicle.png</file>
+    <file>Icons/logo.png</file>
+    <file>Icons/account.png</file>
+    <file>Icons/Car.png</file>
+    <file>Icons/Dashboard.png</file>
+    <file>Icons/icons8.jpg</file>
+    <file>Icons/icons8-logout-rounded-60.png</file>
+    <file>Icons/icons8-member-50 - Copy.png</file>
+    <file>Icons/icons8-member-50.png</file>
+    <file>Icons/icons8-money-yours-50.png</file>
+    <file>Icons/icons8-products-49.png</file>
+    <file>Icons/icons8-purchase-order-80.png</file>
+    <file>Icons/icons8-revenue-64.png</file>
+    <file>Icons/icons8-scroll-down-50.png</file>
+    <file>Icons/icons8-scroll-up-50.png</file>
+    <file>Icons/icons8-task-completed-24.png</file>
+    <file>Icons/icons8-total-sales-100.png</file>
+    <file>Icons/image-removebg-preview (3).png</file>
+    <file>Icons/image-removebg-preview (2).png</file>
+    <file>Icons/Inventory.png</file>
+    <file>Icons/Man.png</file>
+    <file>Icons/Management.png</file>
+    <file>Icons/Money.png</file>
+    <file>Icons/Order Dispatcher.png</file>
+    <file>Icons/Report.png</file>
+    <file>Icons/Truck.png</file>
+  </qresource>
+</RCC>
