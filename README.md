@@ -1,17 +1,17 @@
 # APTO_Distribution_System_DSA_Project
   - # Project Description
-  - There is always a constant need to improve and organize the inner work process for the
-    company in an efficient manner, especially for the distribution companies because they
-    have to deal with many clients or shopkeepers in many areas. To be more efficient, they
-    should have records of everything. For example, they should have proper records of their
-    clients who will buy the product, record of everything they buy and sell to shopkeepers to
-    see how much their products are selling, how much profit they are getting, and many other
-    things. Sometimes, the company also wants to do an analysis of the revenue or sales of
-    its products. But these things are difficult to do manually. We aim to propose a solution
-    to this problem by providing a desktop application that remodels and creates an easier way
-    to assign tasks and keep track of the whole process from the order to the delivery, hence
-    making analysis and keeping everything documented. The solution is the Distribution
-    System
+    - There is always a constant need to improve and organize the inner work process for the
+      company in an efficient manner, especially for the distribution companies because they
+      have to deal with many clients or shopkeepers in many areas. To be more efficient, they
+      should have records of everything. For example, they should have proper records of their
+      clients who will buy the product, record of everything they buy and sell to shopkeepers to
+      see how much their products are selling, how much profit they are getting, and many other
+      things. Sometimes, the company also wants to do an analysis of the revenue or sales of
+      its products. But these things are difficult to do manually. We aim to propose a solution
+      to this problem by providing a desktop application that remodels and creates an easier way
+      to assign tasks and keep track of the whole process from the order to the delivery, hence
+      making analysis and keeping everything documented. The solution is the Distribution
+      System
   - # Aim:
     - To streamline and organize the inner work process for distribution companies efficiently.
 
