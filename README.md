@@ -1,11 +1,11 @@
 # APTO_Distribution_System_DSA_Project
   - # Project Description
   - # Aim:
-      To streamline and organize the inner work process for distribution companies efficiently.
+    - To streamline and organize the inner work process for distribution companies efficiently.
 
   - # Key Features:
-      Single desktop application controlling all modules.
-      Scalable system allowing for easy addition of employees.
+    - Single desktop application controlling all modules.
+    - Scalable system allowing for easy addition of employees.
       Each user has their own module with specific privileges.
   - # Users:
     - # Admin: Owner of the distribution company with the highest privileges and visibility.
