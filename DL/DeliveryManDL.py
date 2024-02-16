@@ -7,14 +7,10 @@ Created on Sat Dec 17 00:25:34 2022
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from BL.SalesMan import salesMan
 import os
-import pandas as pd
 import csv
 from csv import writer
-from BL.Credentials import credential
 from BL.LinkedList import LinkedList
-from BL.User import user
 from BL.DeliveryMan import deliveryMan
 class deliveryManDL:
     deliveryManLinkedList = LinkedList()

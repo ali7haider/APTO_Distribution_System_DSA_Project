@@ -2,9 +2,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from BL.Orders import order
-from BL.Product import product
 import os
-import pandas as pd
 import csv
 class orderDL:
     ordersList = []

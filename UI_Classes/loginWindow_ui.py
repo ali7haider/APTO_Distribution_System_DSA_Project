@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1184, 821)
+        MainWindow.resize(1190, 803)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
@@ -201,7 +201,8 @@ class Ui_MainWindow(object):
         self.cmbRole.addItem("")
         self.cmbRole.addItem("")
         self.btnClose = QtWidgets.QPushButton(self.frame_2)
-        self.btnClose.setGeometry(QtCore.QRect(670, 10, 41, 41))
+        self.btnClose.setGeometry(QtCore.QRect(720, 10, 41, 41))
+        self.btnClose.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.btnClose.setAutoFillBackground(False)
         self.btnClose.setStyleSheet("\n"
 "font: 10pt \"MS Shell Dlg 2\";\n"
@@ -239,4 +240,4 @@ class Ui_MainWindow(object):
         self.cmbRole.setItemText(2, _translate("MainWindow", "Sales Agent"))
         self.cmbRole.setItemText(3, _translate("MainWindow", "Order Dispatcher"))
         self.cmbRole.setItemText(4, _translate("MainWindow", "Delivery Man"))
-import UI_Classes.resources_rc
+import UI_Classes.resources2_rc

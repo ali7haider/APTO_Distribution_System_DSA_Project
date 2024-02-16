@@ -3,11 +3,9 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from BL.Product import product
 import os
-import pandas as pd
 import csv
 import copy
 from BL.Orders import order
-from csv import writer
 from BL.LinkedList import LinkedList
 class productDL:
     AllProducts = []

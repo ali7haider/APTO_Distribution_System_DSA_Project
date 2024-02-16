@@ -3,8 +3,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from BL.Shopkeeper import shopkeeper
 import os
-import pandas as pd
-import csv
+
 class shopkeeperDL:
     shopkeeperList = []
     s1 = shopkeeper('dssad', 1232, 'Ali', 32131232313, 'ds@ds', '03232233232', 'S01', '2022-02-12', 'address', 1233123)

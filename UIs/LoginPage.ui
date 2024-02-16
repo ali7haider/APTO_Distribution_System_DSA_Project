@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1184</width>
-    <height>821</height>
+    <width>1190</width>
+    <height>803</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -457,6 +457,9 @@ margin-left:0px;</string>
             <width>41</width>
             <height>41</height>
            </rect>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="autoFillBackground">
            <bool>false</bool>

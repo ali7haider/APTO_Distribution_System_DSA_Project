@@ -1,13 +1,7 @@
-
-
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QSizePolicy, QLabel, QProgressBar
-from PyQt5.QtCore import Qt, QTimer
-from PyQt5.QtGui import QPixmap, QImage, QIcon
-from UI_Classes.loginWindow_ui import Ui_MainWindow  # Import the generated class
-# from main import MainWindow  # Import the generated class
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtCore import Qt
+from UI_Classes.loginWindow_ui import Ui_MainWindow
 from BL.Credentials import credential
 from DL.AdminDL import adminDL
 from DL.OrderDispatcherDL import orderDispatcherDL
@@ -17,26 +11,9 @@ from DL.SalesManDL import salesManDL
 from DL.ManagerDL import managerDL
 from DL.CategoryDL import categoryDL
 from DL.ProductDL import productDL
+from BL.file_paths import FilePaths
 
-
-# Get the current directory of the script
-current_directory = os.path.dirname(__file__)
-
-# Navigate one directory back to access the Data folder
-data_directory = os.path.abspath(os.path.join(current_directory, os.pardir, "Data"))
-
-# Define the file path
-AdminInfo = os.path.join(data_directory, "AdminInfo.csv")
-SalesManInfo = os.path.join(data_directory, "SalesManInfo.csv")
-OrderDispatcherInfo = os.path.join(data_directory, "OrderDispatcherInfo.csv")
-DeliveryManInfo = os.path.join(data_directory, "DeliveryManInfo.csv")
-
-VehicleInfo = os.path.join(data_directory, "VehicleInfo.csv")
-ProductsInfo = os.path.join(data_directory, "ProductsInfo.csv")
-ManagerInfo = os.path.join(data_directory, "ManagerInfo.csv")
-CategoriesList = os.path.join(data_directory, "CategoriesList.csv")
-
-class LoginWindow(QMainWindow,Ui_MainWindow):
+class LoginWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(LoginWindow, self).__init__()
         # Set up the user interface from the generated class
@@ -44,39 +21,23 @@ class LoginWindow(QMainWindow,Ui_MainWindow):
         # Set flags to remove the default title bar
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.btnLogIn.clicked.connect(self.login)
-        adminDL().loadAdminInfo(AdminInfo)
-        salesManDL().loadSalesManInfo(SalesManInfo)
-        orderDispatcherDL().loadODInfo(OrderDispatcherInfo)
-        deliveryManDL().loaddeliveryManInfo(DeliveryManInfo)
-        vehicleDL().loadVehicleInfo(VehicleInfo)
-        productDL().loadProductsFromFile(ProductsInfo)
-        managerDL().loadManagerInfo(ManagerInfo)
-        categoryDL.readCategoryFromFile(CategoriesList)
-        # managerDL.loadManagerInfo("ManagerInfo.csv")
-    
+        self.file_paths = FilePaths(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data')))
+        self.load_data()
+        # Connect the closeAppBtn button to the close method
+        self.btnClose.clicked.connect(self.close)
+    def load_data(self):
+        adminDL().loadAdminInfo(self.file_paths.AdminInfo)
+        salesManDL().loadSalesManInfo(self.file_paths.SalesManInfo)
+        orderDispatcherDL().loadODInfo(self.file_paths.OrderDispatcherInfo)
+        deliveryManDL().loaddeliveryManInfo(self.file_paths.DeliveryManInfo)
+        vehicleDL().loadVehicleInfo(self.file_paths.VehicleInfo)
+        productDL().loadProductsFromFile(self.file_paths.ProductsInfo)
+        managerDL().loadManagerInfo(self.file_paths.ManagerInfo)
+        categoryDL.readCategoryFromFile(self.file_paths.CategoriesList)
+
     def login(self):
         userName = self.txtUserName.text()
         password = self.txtPassword.text()
         role = self.cmbRole.currentText()
         user = credential(userName, password, role)
         login = credential(userName, password, role)
-        # if(role == "Admin"):
-        #     # if(adminDL().searchAdmin(login)):
-        #     self.newq = AdminWindow()
-        #     self.newq.show()
-        #         # self.newq.loadTableAdminEmployees(managerDL.managers)
-        #         # self.newq.btnAdminDeleteEmployees.clicked.connect(lambda:self.newq.deleteUser())
-                
-                
-        # elif(role == "Manager"):
-        #     self.newq = ManagerWindow()
-        #     self.newq.show()           
-            
-        # elif(role == "Sales Agent"):
-        #     self.newq = SaleTeam()
-        #     self.newq.show() 
-        # elif(role == "Order Dispatcher"):
-        #     self.OrderDispatcher = OrderDispatcher()
-        #     self.OrderDispatcher.show()
-        # elif(role == "Delivery Man"):
-        #     print("Delivery Man")

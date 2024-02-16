@@ -1,12 +1,9 @@
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from BL.Admin import admin
 from BL.Manager import manager
 import os
-import pandas as pd
 from csv import writer
-from BL.User import user
 from BL.LinkedList import LinkedList
 import csv
 class managerDL:
