@@ -29,3 +29,11 @@
     - Reports are available in graph and tabular forms, downloadable in PDF.
     - Expenses and revenue reports are available for download in PDF.
     - Progress data of users can be downloaded in CSV format.
+  - # Project Features
+    - Employees Management
+    - Product Management
+    - Email Sending
+    - Route Management
+    - Order Management
+  - # Technology Stack
+    - Python, PyQT5
