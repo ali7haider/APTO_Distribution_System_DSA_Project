@@ -7,7 +7,6 @@ Created on Sat Feb 17 01:26:51 2024
 
 import os
 from PyQt5.QtWidgets import QMainWindow,QFileDialog,QMessageBox
-from PyQt5.QtCore import Qt
 from UI_Classes.adminWindow_ui import Ui_MainWindow
 from DL.OrderDispatcherDL import orderDispatcherDL
 from DL.DeliveryManDL import deliveryManDL
@@ -97,7 +96,6 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
         dates=df[1].values.tolist()
         sa=[]
         da=[]
-        dateToday= date.today()
         today = date.today()
         for i in range(7):
             yesterday =(today - timedelta(days = i+1)).strftime("%d/%m/%Y")
@@ -130,7 +128,6 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
         dates=df[1].values.tolist()
         sa=[]
         da=[]
-        dateToday= date.today()
         today = date.today()
         for i in range(7):
             yesterday =(today - timedelta(days = i+1)).strftime("%d/%m/%Y")
