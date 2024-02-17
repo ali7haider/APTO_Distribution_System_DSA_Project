@@ -30,6 +30,7 @@ from PyQt5 import QtWidgets
 from datetime import date
 import shutil
 from datetime import timedelta
+from UI_Classes.addSaleAgentWindow import AddSaleAgentWindow
 
 class AdminWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -258,7 +259,7 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
         #     self.S.btnAdd.clicked.connect(lambda: self.loadLabels())
     
         # elif u=="Sales Agent":
-        #     self.S=ManagerAddingNewSaleAgent()
+        #     self.S=AddSaleAgentWindow()
         #     self.S.show()
         #     self.S.btnAdd.clicked.connect(lambda : self.loadEmployeeTable())
         #     self.S.btnAdd.clicked.connect(lambda: self.loadLabels())

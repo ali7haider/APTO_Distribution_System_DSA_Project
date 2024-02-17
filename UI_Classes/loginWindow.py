@@ -14,6 +14,8 @@ from DL.ProductDL import productDL
 from BL.file_paths import FilePaths
 from UI_Classes.adminWindow import AdminWindow
 from UI_Classes.managerWindow import ManagerWindow
+from UI_Classes.orderDispatcher import OrderDispatcher
+
 
 class LoginWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -47,7 +49,10 @@ class LoginWindow(QMainWindow, Ui_MainWindow):
             # if(adminDL().searchAdmin(login)):
             self.newq = AdminWindow()
             self.newq.show()
-        if(role == "Manager"):
+        elif(role == "Manager"):
             # if(adminDL().searchAdmin(login)):
             self.newq = ManagerWindow()
             self.newq.show()
+        elif(role == "Order Dispatcher"):
+            self.OrderDispatcher = OrderDispatcher()
+            self.OrderDispatcher.show()

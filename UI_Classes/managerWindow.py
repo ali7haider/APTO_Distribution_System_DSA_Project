@@ -30,17 +30,13 @@ from PyQt5 import QtWidgets
 from datetime import date
 import shutil
 from datetime import timedelta
+from UI_Classes.addSaleAgentWindow import AddSaleAgentWindow
 
 class ManagerWindow(QMainWindow,Ui_MainWindow):
     def __init__(self):
         super(ManagerWindow, self).__init__()
         # Set up the user interface from the generated class
         self.setupUi(self)
-        # salesManDL().loadSalesManInfo("SalesManInfo.csv")
-        # orderDispatcherDL().loadODInfo("OrderDispatcherInfo.csv")
-        # deliveryManDL().loaddeliveryManInfo("DeliveryManInfo.csv")
-        # vehicleDL().loadVehicleInfo("VehicleInfo.csv")
-        # self.loadSaleAgentData()
         self.file_paths = FilePaths(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data')))       
 
         
@@ -326,13 +322,12 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
                 msg.exec_()    
 
 
-#Sale Agent CRUD  
+    #Sale Agent CRUD  
     def addNewAgent(self):
-        pass
-        # self.newq=ManagerAddingNewSaleAgent()
-        # self.newq.show()
-        # self.newq.btnAdd.clicked.connect(lambda:self.loadSaleAgentData())
-        # self.loadingSaleAgentLabels() 
+        self.newq=AddSaleAgentWindow()
+        self.newq.show()
+        self.newq.btnAdd.clicked.connect(lambda:self.loadSaleAgentData())
+        self.loadingSaleAgentLabels() 
         
     def editDataSaleAgent(self):
         if(self.tableSaleAgentList.currentRow() != None and self.tableSaleAgentList.currentRow()>=0):
