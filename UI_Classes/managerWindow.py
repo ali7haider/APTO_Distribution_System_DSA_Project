@@ -12,7 +12,6 @@ from DL.OrderDispatcherDL import orderDispatcherDL
 from DL.DeliveryManDL import deliveryManDL
 from DL.VehicleDL import vehicleDL
 from DL.SalesManDL import salesManDL
-from DL.ManagerDL import managerDL
 from DL.CategoryDL import categoryDL
 from DL.ProductDL import productDL
 from BL.file_paths import FilePaths
@@ -21,10 +20,8 @@ from BL.Vehicle import vehicle
 from BL.OrderDispatcher import orderDispatcher
 from BL.DeliveryMan import deliveryMan
 from BL.SalesMan import salesMan
-from BL.Manager import manager
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.backends.backend_pdf import PdfPages
 from PyQt5.QtGui import QPixmap
 from PyQt5 import QtWidgets
 from datetime import date
@@ -40,7 +37,7 @@ from UI_Classes.changeUserNameOrPasswordWindow import ChangeUserNameOrPasswordWi
 from UI_Classes.editProductWindow import EditProductWindow
 from UI_Classes.addProductWindow import AddProductWindow
 from UI_Classes.addOrderDispatcherWindow import AddOrderDispatcherWindow
-from UI_Classes.editProductWindow import EditProductWindow
+from UI_Classes.editOrderDispatcherWindow import EditOrderDispatcherWindow
 from UI_Classes.addDeliveryMenWindow import AddDeliveryManWindow
 from UI_Classes.editDeliveryMenWindow import EditDeliveryManWindow
 class ManagerWindow(QMainWindow,Ui_MainWindow):
@@ -155,7 +152,6 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
         dates=df[1].values.tolist()
         sa=[]
         da=[]
-        dateToday= date.today()
         today = date.today()
         for i in range(7):
             yesterday =(today - timedelta(days = i+1)).strftime("%d/%m/%Y")
@@ -235,7 +231,7 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
         self.txtCellNo.setEnabled(False)
         self.txtSalary.setEnabled(False)
     def changeUserNameAndPassword(self):
-        self.c=ChangeUserNamePasswordWindow()
+        self.c=ChangeUserNameOrPasswordWindow()
         self.c.show()
         
         

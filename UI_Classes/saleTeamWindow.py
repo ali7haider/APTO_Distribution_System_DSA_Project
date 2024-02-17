@@ -5,7 +5,7 @@ Created on Sat Feb 17 18:16:46 2024
 @author: Digital Zone
 """
 import os
-from PyQt5.QtWidgets import QMainWindow,QMessageBox
+from PyQt5.QtWidgets import QMainWindow
 from UI_Classes.saleTeamWindow_ui import Ui_MainWindow
 from DL.ProductDL import productDL
 from DL.OrderDL import orderDL
@@ -14,10 +14,9 @@ from BL.file_paths import FilePaths
 from BL.User import user
 from BL.Orders import order
 
-from BL.Shopkeeper import shopkeeper
+from DL.ShopkeeperDL import shopkeeperDL
+
 from datetime import date
-from PyQt5.QtGui import QIntValidator
-from datetime import datetime
 from UI_Classes.viewStockWindow import ViewStockWindow
 from PyQt5 import QtWidgets
 
