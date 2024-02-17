@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Feb 17 18:06:01 2024
+Created on Sat Feb 17 18:08:56 2024
 
 @author: Digital Zone
 """
@@ -14,40 +14,25 @@ from BL.Product import product
 from datetime import date
 from PyQt5.QtGui import QIntValidator
 from datetime import datetime
-class EditProductWindow(QMainWindow,Ui_MainWindow):
-    def __init__(self , p):
-        super(EditProductWindow,self).__init__()
+
+class AddProductWindow(QMainWindow):
+    def __init__(self):
+        super(AddProductWindow,self).__init__()
         self.setupUi(self)
         self.file_paths = FilePaths(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data')))  
         self.implementingValidation()
         self.btnCancel.clicked.connect(lambda : self.close())
-        self.btnAdd.clicked.connect(lambda : self.editProduct(p))
+        self.btnAdd.clicked.connect(lambda : self.addProduct())
         self.dateAdded.setDate(date.today())
-        self.txtID.setEnabled(False)
-        self.fillInformation(p)
-        self.headerLabel.setText("Products   >>  Edit Product")
-        self.btnAdd.setText("Edit")
+        self.expiryDate.setDate(date.today())
         
     def implementingValidation(self):
         self.txtID.setInputMask("P_999999")
         self.txtQuantity.setValidator(QIntValidator())
         self.txtProductionCost.setValidator(QIntValidator())
         self.txtSalesPrice.setValidator(QIntValidator())
-    def fillInformation(self, p):
         
-        self.txtID.setText(p.Id)
-        self.txtName.setText(p.name)
-        self.cmbCategory.setCurrentText(p.category)
-        self.txtQuantity.setText(p.quantity)
-        self.txtDescription.setText(p.description)
-        self.txtProductionCost.setText(p.productionCost)
-        self.txtSalesPrice.setText(p.salePrice)
-        expiryDate = datetime.strptime(p.expiryDate, '%d/%m/%Y').date()
-        self.expiryDate.setDate(expiryDate)
-        date = datetime.strptime(p.date, '%d/%m/%Y').date()
-        self.dateAdded.setDate(date)
-        
-    def editProduct(self,p):
+    def addProduct(self):
         flag = True;
         ID = self.txtID.text()
         name = self.txtName.text()
@@ -101,11 +86,13 @@ class EditProductWindow(QMainWindow,Ui_MainWindow):
                 self.lblExpiryError.setText("")
 
         if(flag == True):
-            u = product(name, ID, category, quantity, description, productionCost, salesPrice, date, expiryDate)
-            productDL().editProduct(p, u)
-            productDL().storeAllProductInFile(self.file_paths.ProductInfo)
+            p = product(name, ID, category, quantity, description, productionCost, salesPrice, date, expiryDate)
+            productDL().addProductToList(p)
+            productDL().storeProductInFile(self.file_paths.ProductInfo, p)
             msg = QMessageBox()
             msg.setText("Done")
-            msg.setInformativeText('Product Edited Successfully!')
-            msg.setWindowTitle("Edited")
+            msg.setInformativeText('Product Added Successfully!')
+            msg.setWindowTitle("Added")
             msg.exec_()
+            
+            self.close()
