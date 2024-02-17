@@ -6,7 +6,7 @@ Created on Sat Feb 17 18:41:58 2024
 """
 import os
 from PyQt5.QtWidgets import QMainWindow,QMessageBox
-from UI_Classes.addOrderDispatcherWindow_ui import Ui_MainWindow
+from UI_Classes.editOrderDispatcherWindow_ui import Ui_MainWindow
 from DL.OrderDispatcherDL import orderDispatcherDL
 from BL.file_paths import FilePaths
 from BL.OrderDispatcher import orderDispatcher
@@ -14,9 +14,9 @@ from datetime import date
 from PyQt5.QtGui import QIntValidator
 from PyQt5 import QtCore, QtGui
 from datetime import datetime
-class EditOrderDispatcher(QMainWindow,Ui_MainWindow):
+class EditOrderDispatcherWindow(QMainWindow,Ui_MainWindow):
     def __init__(self,S):
-        super(EditOrderDispatcher,self).__init__()
+        super(EditOrderDispatcherWindow,self).__init__()
         self.setupUi(self)
         self.file_paths = FilePaths(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data')))      
         self.txtID.setEnabled(False)

@@ -7,7 +7,7 @@ Created on Sat Feb 17 18:08:56 2024
 
 import os
 from PyQt5.QtWidgets import QMainWindow,QMessageBox
-from UI_Classes.editProductWindow_ui import Ui_MainWindow
+from UI_Classes.addProductWindow_ui import Ui_MainWindow
 from DL.ProductDL import productDL
 from BL.file_paths import FilePaths
 from BL.Product import product
@@ -15,7 +15,7 @@ from datetime import date
 from PyQt5.QtGui import QIntValidator
 from datetime import datetime
 
-class AddProductWindow(QMainWindow):
+class AddProductWindow(QMainWindow,Ui_MainWindow):
     def __init__(self):
         super(AddProductWindow,self).__init__()
         self.setupUi(self)

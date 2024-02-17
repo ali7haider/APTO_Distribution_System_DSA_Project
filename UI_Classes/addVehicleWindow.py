@@ -6,7 +6,7 @@ Created on Sat Feb 17 18:28:59 2024
 """
 import os
 from PyQt5.QtWidgets import QMainWindow,QMessageBox
-from UI_Classes.editVehicleWindow_ui import Ui_MainWindow
+from UI_Classes.addVehicleWindow_ui import Ui_MainWindow
 from DL.VehicleDL import vehicleDL
 from BL.file_paths import FilePaths
 from BL.Vehicle import vehicle
@@ -14,7 +14,7 @@ from datetime import date
 from PyQt5.QtGui import QIntValidator
 from PyQt5 import QtCore, QtGui
 from datetime import datetime
-class AddVehicleWindow(QMainWindow):
+class AddVehicleWindow(QMainWindow,Ui_MainWindow):
     def __init__(self):
         super(AddVehicleWindow,self).__init__()
         self.setupUi(self)
