@@ -139,12 +139,12 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
         ax1.pie(num, explode=explode, labels=employees,colors=colors ,autopct='%1.1f%%',
         shadow=True, startangle=90)
         ax1.axis('equal')        
-        plt.savefig("allEmployeesManagerGraph.png", transparent=True)
+        plt.savefig("Graphs/allEmployeesManagerGraph.png", transparent=True)
         plt.show()
         # pixmap=QPixmap("save_figure.png")
         # item = QGraphicsPixmapItem(pixmap)
         # scene.addItem(item)
-        pixmap = QPixmap('allEmployeesManagerGraph.png')
+        pixmap = QPixmap('Graphs/allEmployeesManagerGraph.png')
         self.lblManagerSaleInLast7Days.setPixmap(pixmap)
         
 
@@ -187,11 +187,11 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
         plt.xlabel("Date",fontsize=14)
         plt.ylabel("Sales",fontsize=14)
         plt.bar(da,sa,color='#48ACAC')
-        plt.savefig("salesLast7Days.png", transparent=True)
+        plt.savefig("Graphs/salesLast7Days.png", transparent=True)
         # pixmap=QPixmap("save_figure.png")
         # item = QGraphicsPixmapItem(pixmap)
         # scene.addItem(item)
-        pixmap = QPixmap('salesLast7Days.png')        
+        pixmap = QPixmap('Graphs/salesLast7Days.png')        
         self.lblLast12MonthRevenue.setPixmap(pixmap)
         self.lblManagerRenevueInLast12Months.setPixmap(pixmap)
     def loadProductGraph(self):
@@ -213,11 +213,11 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
         plt.xlabel("Categories",fontsize=14)
         plt.ylabel("Quantities",fontsize=14)
         plt.bar(cate,quan,color='#48ACAC')
-        plt.savefig("output.png", transparent=True)
+        plt.savefig("Graphs/output.png", transparent=True)
         # pixmap=QPixmap("save_figure.png")
         # item = QGraphicsPixmapItem(pixmap)
         # scene.addItem(item)
-        pixmap = QPixmap('output.png')
+        pixmap = QPixmap('Graphs/output.png')
         self.lblWeeklyRevenue.setPixmap(pixmap)
         self.lblWeeklyRevenue.resize(pixmap.width(),pixmap.height())
 

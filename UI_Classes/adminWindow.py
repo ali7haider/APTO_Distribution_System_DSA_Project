@@ -33,8 +33,7 @@ from datetime import timedelta
 from UI_Classes.addSaleAgentWindow import AddSaleAgentWindow
 from UI_Classes.editSaleAgentWindow import EditSaleAgentWindow
 
-from UI_Classes.addSaleAgentWindow import AddSaleAgentWindow
-from UI_Classes.editSaleAgentWindow import EditSaleAgentWindow
+
 from UI_Classes.addVehicleWindow import AddVehicleWindow
 from UI_Classes.editVehicleWindow import EditVehicleWindow
 
@@ -42,7 +41,6 @@ from UI_Classes.generateReportsWindow import GenerateReportsWindow
 from UI_Classes.editProductWindow import EditProductWindow
 from UI_Classes.addProductWindow import AddProductWindow
 from UI_Classes.addOrderDispatcherWindow import AddOrderDispatcherWindow
-from UI_Classes.editProductWindow import EditProductWindow
 from UI_Classes.addDeliveryMenWindow import AddDeliveryManWindow
 from UI_Classes.editDeliveryMenWindow import EditDeliveryManWindow  
 from UI_Classes.addManagerWindow import AddManagerWindow
@@ -176,11 +174,11 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
         plt.xlabel("Date",fontsize=14)
         plt.ylabel("Sales",fontsize=14)
         plt.bar(da,sa,color='#48ACAC')
-        plt.savefig("salesLast7Days.png", transparent=True)
+        plt.savefig("Graphs/salesLast7Days.png", transparent=True)
         # pixmap=QPixmap("save_figure.png")
         # item = QGraphicsPixmapItem(pixmap)
         # scene.addItem(item)
-        pixmap = QPixmap('salesLast7Days.png')        
+        pixmap = QPixmap('Graphs/salesLast7Days.png')        
         self.lblSalePerDay.setPixmap(pixmap)
     
     def loadAllEmployeesGraph(self):
@@ -197,13 +195,13 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
         ax1.pie(num, explode=explode, labels=employees,colors=colors ,autopct='%1.1f%%',
         shadow=True, startangle=90)
         ax1.axis('equal')        
-        plt.savefig("allEmployeesGraph.png", transparent=True)
+        plt.savefig("Graphs/allEmployeesGraph.png", transparent=True)
         plt.show()
         print("Ali")
         # pixmap=QPixmap("save_figure.png")
         # item = QGraphicsPixmapItem(pixmap)
         # scene.addItem(item)
-        pixmap = QPixmap('allEmployeesGraph.png')
+        pixmap = QPixmap('Graphs/allEmployeesGraph.png')
         self.lblEmployeesGraph.setPixmap(pixmap)
     
     def printProductGraph(self):
@@ -255,11 +253,11 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
         plt.xlabel("Categories",fontsize=14)
         plt.ylabel("Quantities",fontsize=14)
         plt.bar(cate,quan,color='#48ACAC')
-        plt.savefig("output.png", transparent=True)
+        plt.savefig("Graphs/output.png", transparent=True)
         # pixmap=QPixmap("save_figure.png")
         # item = QGraphicsPixmapItem(pixmap)
         # scene.addItem(item)
-        pixmap = QPixmap('output.png')
+        pixmap = QPixmap('Graphs/output.png')
         self.labelProduct.setPixmap(pixmap)
         self.labelProduct.resize(pixmap.width(),pixmap.height())
         
