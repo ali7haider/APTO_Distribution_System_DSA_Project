@@ -31,6 +31,8 @@ from datetime import date
 import shutil
 from datetime import timedelta
 from UI_Classes.addSaleAgentWindow import AddSaleAgentWindow
+from UI_Classes.editSaleAgentWindow import EditSaleAgentWindow
+
 
 class AdminWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -631,11 +633,11 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
            dateCreated = self.tableAdminEmployees.item(row,8).text()          
            vehicle= self.tableAdminEmployees.item(row,9).text()
            salary = self.tableAdminEmployees.item(row,10).text()
-           # if role=="Sales Agent":
-           #     s=salesMan(userName, password,role,name ,cnic ,email, cellNo,Id, dateCreated,vehicle,salary)
-           #     editWin=ManagerEditSaleAgent(s)
-           #     editWin.show()
-           #     self.S.btnSave.clicked.connect(lambda : self.loadEmployeeTable())
+           if role=="Sales Agent":
+                s=salesMan(userName, password,role,name ,cnic ,email, cellNo,Id, dateCreated,vehicle,salary)
+                editWin=EditSaleAgentWindow(s)
+                editWin.show()
+                self.S.btnSave.clicked.connect(lambda : self.loadEmployeeTable())
     
            # elif role=="Delivery Man":
            #     d=deliveryMan(userName, password,role,name ,cnic ,email, cellNo,Id, dateCreated,vehicle,salary)

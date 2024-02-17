@@ -1,28 +1,46 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Feb 17 16:42:37 2024
+Created on Sat Feb 17 17:09:08 2024
 
 @author: Digital Zone
 """
 import os
 from PyQt5.QtWidgets import QMainWindow,QMessageBox
-from UI_Classes.addSaleAgentWindow_ui import Ui_MainWindow
+from UI_Classes.editSaleAgentWindow_ui import Ui_MainWindow
 from DL.SalesManDL import salesManDL
 from BL.file_paths import FilePaths
 from BL.SalesMan import salesMan
 from datetime import date
 from PyQt5.QtGui import QIntValidator
 from PyQt5 import QtCore, QtGui
+from datetime import datetime
 
-class AddSaleAgentWindow(QMainWindow,Ui_MainWindow):
-    def __init__(self):
-        super(AddSaleAgentWindow,self).__init__()
+class EditSaleAgentWindow(QMainWindow,Ui_MainWindow):
+    def __init__(self,S):
+        super(EditSaleAgentWindow,self).__init__()
         self.setupUi(self)
         self.file_paths = FilePaths(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data')))  
-        self.btnAdd.clicked.connect(self.saveNewSaleAgentData)
+        self.txtID.setEnabled(False)
+        self.implementingValidation()   
+        self.fillInformation(S)
+        # self.btnAdd.clicked.connect(self.saveNewSaleAgentData)
+        self.btnSave.clicked.connect(lambda:self.saveSaleAgentData(S))
         self.btnCancel.clicked.connect(lambda: self.close())
-        self.implementingValidation()
-        self.dateEditAddAgent.setDate(date.today())
+        
+    def fillInformation(self,S):
+        self.txtID.setText(S.Id)
+        self.txtName.setText(S.name)
+        self.txtCNIC.setText(S.cnic)
+        self.txtEmail.setText(S.email)
+        self.txtUserName.setText(S.login.userName)
+        self.txtPassword.setText(S.login.password)
+        self.txtCellNo.setText(S.cellNo)
+        self.txtSalary.setText(S.salary)
+        self.cmbxVehicle.setCurrentText(str(S.vehicle))
+        
+        # expiryDate = datetime.strptime(p.dateCreated, '20%y-%m-%d').date()
+        # self.dateEditAddAgent.setDate(expiryDate)
+        
         
     def implementingValidation(self):
         rx  = QtCore.QRegExp("[0-9]{13}")   
@@ -82,39 +100,34 @@ class AddSaleAgentWindow(QMainWindow,Ui_MainWindow):
            
         today=date.today()
         dateToday=today.strftime("20%y-%m-%d")
-        # if dateCreated<dateToday:
-        #     self.lblDateValidation.setText("*Date should be of Today or Greater")
-        #     flag=False
-        # else:
-        #     self.lblDateValidation.setText("")
+        if dateCreated<dateToday:
+            self.lblDateValidation.setText("*Date should be of Today or Greater")
+            flag=False
+        else:
+            self.lblDateValidation.setText("")
         if flag==True:
             return True
         else:
             return False
-            
-    def saveNewSaleAgentData(self):  
+    def saveSaleAgentData(self,previous):
         Id = self.txtID.text()
         name = self.txtName.text()
         cnic = self.txtCNIC.text()
         email = self.txtEmail.text()
         userName = self.txtUserName.text()
         password = str(self.txtPassword.text())
-        cellNo = self.txtCellNo.text()
+        cellNo = str(self.txtCellNo.text())
         vehicle = self.cmbxVehicle.currentText()
-        dateCreated = self.dateEditAddAgent.date()
-        today=date.today()
         dateCreated = self.dateEditAddAgent.date().toPyDate()
         role="Sales Agent"
         salary = self.txtSalary.text()
         if self.ValidationChecker(Id,name,cnic,email,userName,password,cellNo,salary,vehicle,dateCreated):
-            salesAgent = salesMan(userName, password,role, name, cnic, email, cellNo, Id, dateCreated, vehicle, salary)
-            # print(salesAgent.Id,salesAgent.login.userName,salesAgent.login.password,salesAgent.login.role,salesAgent.cnic,salesAgent.email,salesAgent.cellNo,salesAgent.dateCreated,salesAgent.vehicle,salesAgent.salary)
-            # print(salesAgent.login.password)
-            salesManDL().addSalesMan(salesAgent)
-            salesManDL().addSalesmanToFile(self.file_paths.SalesManInfo,salesAgent)
+            new = salesMan(userName, password,role, name, cnic, email, cellNo, Id, dateCreated, vehicle, salary)
+            salesManDL().EditSaleAgentDataToList(previous,new)
+            # salesManDL().addSalesmanToFile(salesAgent)
             msg = QMessageBox()
             msg.setText("Done")
-            msg.setInformativeText('User Added Succesfully')
+            msg.setInformativeText('User Data Updated Succesfully')
             msg.setWindowTitle("Successful")
             msg.exec_()
             self.close()

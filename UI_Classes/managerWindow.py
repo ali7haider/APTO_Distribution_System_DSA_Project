@@ -31,6 +31,7 @@ from datetime import date
 import shutil
 from datetime import timedelta
 from UI_Classes.addSaleAgentWindow import AddSaleAgentWindow
+from UI_Classes.editSaleAgentWindow import EditSaleAgentWindow
 
 class ManagerWindow(QMainWindow,Ui_MainWindow):
     def __init__(self):
@@ -346,12 +347,12 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
             salary = self.tableSaleAgentList.item(row,10).text() 
             S = salesMan(userName, password,role,name ,cnic ,email, cellNo,Id, dateCreated,vehicle,salary)
             
-            # self.editSaleAgentWindow=ManagerEditSaleAgent(S)
-            # self.editSaleAgentWindow.show()
+            self.editSaleAgentWindow=EditSaleAgentWindow(S)
+            self.editSaleAgentWindow.show()
             # # self.loadSaleAgentData()
             # # salesManDL().addAllSalesmanToFile()
-            # self.editSaleAgentWindow.btnSave.clicked.connect(lambda:self.loadSaleAgentData())
-            # self.editSaleAgentWindow.btnSave.clicked.connect(lambda:salesManDL().addAllSalesmanToFile("SalesManInfo.csv"))
+            self.editSaleAgentWindow.btnSave.clicked.connect(lambda:self.loadSaleAgentData())
+            self.editSaleAgentWindow.btnSave.clicked.connect(lambda:salesManDL().addAllSalesmanToFile("SalesManInfo.csv"))
     def deleteSaleAgent(self):
        row = self.tableSaleAgentList.currentRow()
        print(row)
