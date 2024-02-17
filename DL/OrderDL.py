@@ -53,7 +53,7 @@ class orderDL:
             deliveryDate= row[10]
             billStatus =  row[11]
             pendingBill = row[12]
-           
+            client='Ali'
             singleOrder = order(orderID,shopkeeper,saleAgent,productList,
                                 client,orderPlacer,totalBill,status,
                                 deliveryBoy,orderDate,deliveryDate,billStatus,

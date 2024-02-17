@@ -88,9 +88,7 @@ class productDL:
     def CartRepair(productID,quantity):
         product = productDL.productQuantityDecreaser(productID, quantity)
         flag = False
-        print("Product Quantity 1:",product.quantity)
         product.quantity = quantity
-        print("Product Quantity 2:",product.quantity)
         # print("order quantity",quantity,"\n")
         for i in productDL.productInCart:
             if i.ID == productID:
@@ -105,7 +103,6 @@ class productDL:
             quantity = i.quantity
             price = i.salesPrice
             bill = bill + (price*quantity)
-        print("Product Quantity 3:",product.quantity)
         # product.quantity = product.quantity - quantity
         # print("Product Quantity 1:",product.quantity)
         return bill
@@ -176,7 +173,6 @@ class productDL:
             
             productDL.productList.append(singleOrder)
             # print(users.Id)
-            print
         file.close()
         
     # @staticmethod

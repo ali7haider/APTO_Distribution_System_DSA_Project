@@ -12,6 +12,9 @@ import csv
 from csv import writer
 from BL.LinkedList import LinkedList
 from BL.DeliveryMan import deliveryMan
+from BL.file_paths import FilePaths
+file_paths = FilePaths(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data')))
+
 class deliveryManDL:
     deliveryManLinkedList = LinkedList()
     
@@ -46,7 +49,7 @@ class deliveryManDL:
     def addDMToFile(s):
         # print(s.password)
         lis=deliveryManDL().SaleAgentToLis(s)
-        with open("DeliveryManInfo.csv","a", newline='') as file:
+        with open(file_paths.DeliveryManInfo,"a", newline='') as file:
             row=writer(file)
             row.writerow(lis)
             file.close()
@@ -54,7 +57,7 @@ class deliveryManDL:
     def addAllDMToFile():
         # print(s.password)
         
-        with open("DeliveryManInfo.csv","w") as file:
+        with open(file_paths.DeliveryManInfo,"w") as file:
             row=writer(file)
             start=deliveryManDL.deliveryManDL.head                          
             while start:
