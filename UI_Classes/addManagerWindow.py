@@ -1,45 +1,29 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sat Feb 17 17:57:36 2024
+Created on Sat Feb 17 18:02:31 2024
 
 @author: Digital Zone
 """
 
 import os
 from PyQt5.QtWidgets import QMainWindow,QMessageBox
-from UI_Classes.editManagerWindow_ui import Ui_MainWindow
+from UI_Classes.addManagerWindow_ui import Ui_MainWindow
 from DL.ManagerDL import managerDL
 from BL.file_paths import FilePaths
 from BL.Manager import manager
 from datetime import date
 from PyQt5.QtGui import QIntValidator
 from PyQt5 import QtCore, QtGui
-from datetime import datetime
-class EditManagerWindow(QMainWindow,Ui_MainWindow):
-    def __init__(self,S):
-        super(EditManagerWindow,self).__init__()
+
+class AddManagerWindow(QMainWindow,Ui_MainWindow):
+    def __init__(self):
+        super(AddManagerWindow,self).__init__()
         self.setupUi(self)
         self.file_paths = FilePaths(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data')))  
         self.btnCancel.clicked.connect(lambda : self.close())
-        self.btnAdd.clicked.connect(lambda : self.editManager(S))
+        self.btnAdd.clicked.connect(lambda : self.addManager())
         self.dateEditAddAgent.setDate(date.today())
         self.implementingValidation()
-        self.txtID.setEnabled(False)
-        self.label_65.setText("Edit Manager")
-        self.btnAdd.setText("Save")
-        self.fillInformation(S)
-    def fillInformation(self, p):
-        
-        self.txtID.setText(p.Id)
-        self.txtName.setText(p.name)
-        self.txtCNIC.setText(p.cnic)
-        self.txtUserName.setText(p.login.userName)
-        self.txtPassword.setText(p.login.password)
-        self.txtEmail.setText(p.email)
-        self.txtCellNo.setText(p.cellNo)
-        self.txtSalary.setText(p.salary)
-        expiryDate = datetime.strptime(p.dateCreated, '20%y-%m-%d').date()
-        self.dateEditAddAgent.setDate(expiryDate)
     def implementingValidation(self):
         rx  = QtCore.QRegExp("[0-9]{13}")   
         val = QtGui.QRegExpValidator(rx)
@@ -49,7 +33,7 @@ class EditManagerWindow(QMainWindow,Ui_MainWindow):
         self.txtCellNo.setInputMask("+99_999_9999999")
         self.txtID.setInputMask("M_999999")
     
-    def editManager(self,previous):
+    def addManager(self):
         flag = True;
         Id = self.txtID.text()
         role="Manager"
@@ -104,12 +88,15 @@ class EditManagerWindow(QMainWindow,Ui_MainWindow):
             
 
         if(flag == True):
-            p = manager(userName, password, role, name, cnic, email, cellNo, Id, dateCreated, salary)
-            managerDL().EditManager(previous,p)
-            managerDL().addAllManagerToFile(self.file_paths.ManagerInfo)
-            msg = QMessageBox()
-            msg.setText("Done")
-            msg.setInformativeText('Data Updated Successfully!')
-            msg.setWindowTitle("Added")
-            msg.exec_()            
-            self.close()
+            if managerDL().managers.checkID(Id)==True:
+                p = manager(userName, password, role, name, cnic, email, cellNo, Id, dateCreated, salary)
+                managerDL().addManager(p)
+                managerDL().addManagerToFile(self.file_paths.ManagerInfo, p)
+                msg = QMessageBox()
+                msg.setText("Done")
+                msg.setInformativeText('User Added Successfully!')
+                msg.setWindowTitle("Added")
+                msg.exec_()            
+                self.close()
+            else:
+                self.lblIDValidation.setText("ID Already Exist ")  
