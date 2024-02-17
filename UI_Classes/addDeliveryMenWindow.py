@@ -6,7 +6,7 @@ Created on Sat Feb 17 18:39:26 2024
 """
 import os
 from PyQt5.QtWidgets import QMainWindow,QMessageBox
-from UI_Classes.addDeliveryManWindow_ui import Ui_MainWindow
+from UI_Classes.addDeliveryMenWindow_ui import Ui_MainWindow
 from DL.DeliveryManDL import deliveryManDL
 from BL.file_paths import FilePaths
 from BL.DeliveryMan import deliveryMan

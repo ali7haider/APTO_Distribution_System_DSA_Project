@@ -21,7 +21,7 @@ from fpdf import FPDF
 from datetime import timedelta
 import pandas as pd
 
-class GenerateReportWindow(QMainWindow,Ui_MainWindow):
+class GenerateReportsWindow(QMainWindow,Ui_MainWindow):
     def __init__(self):
         super(GenerateReportWindow,self).__init__()
         self.setupUi(self)

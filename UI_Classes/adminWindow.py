@@ -33,6 +33,20 @@ from datetime import timedelta
 from UI_Classes.addSaleAgentWindow import AddSaleAgentWindow
 from UI_Classes.editSaleAgentWindow import EditSaleAgentWindow
 
+from UI_Classes.addSaleAgentWindow import AddSaleAgentWindow
+from UI_Classes.editSaleAgentWindow import EditSaleAgentWindow
+from UI_Classes.addVehicleWindow import AddVehicleWindow
+from UI_Classes.editVehicleWindow import EditVehicleWindow
+
+from UI_Classes.generateReportsWindow import GenerateReportsWindow
+from UI_Classes.editProductWindow import EditProductWindow
+from UI_Classes.addProductWindow import AddProductWindow
+from UI_Classes.addOrderDispatcherWindow import AddOrderDispatcherWindow
+from UI_Classes.editProductWindow import EditProductWindow
+from UI_Classes.addDeliveryMenWindow import AddDeliveryManWindow
+from UI_Classes.editDeliveryMenWindow import EditDeliveryManWindow  
+from UI_Classes.addManagerWindow import AddManagerWindow
+from UI_Classes.editManagerWindow import EditManagerWindow
 
 class AdminWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -86,9 +100,9 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
        
     
     def generateReportPage(self):
-        pass
-        # self.geneReport=GenerateReport()
-        # self.geneReport.show()
+        
+        self.geneReport=GenerateReportsWindow()
+        self.geneReport.show()
         
     
     
@@ -254,27 +268,27 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
     #Employee Window
     def addUser(self):
         u = self.cmbxAdminAddEmployee.currentText()
-        # if u=="Manager":
-        #     self.S=AddNewManager()
-        #     self.S.show()
-        #     self.S.btnAdd.clicked.connect(lambda : self.loadEmployeeTable())
-        #     self.S.btnAdd.clicked.connect(lambda: self.loadLabels())
+        if u=="Manager":
+            self.S=AddManagerWindow()
+            self.S.show()
+            self.S.btnAdd.clicked.connect(lambda : self.loadEmployeeTable())
+            self.S.btnAdd.clicked.connect(lambda: self.loadLabels())
     
-        # elif u=="Sales Agent":
-        #     self.S=AddSaleAgentWindow()
-        #     self.S.show()
-        #     self.S.btnAdd.clicked.connect(lambda : self.loadEmployeeTable())
-        #     self.S.btnAdd.clicked.connect(lambda: self.loadLabels())
-        # elif u=="Order Dispatcher":
-        #     self.S=ManagerAddingNewOrderDispacther()
-        #     self.S.show()
-        #     self.S.btnAdd.clicked.connect(lambda : self.loadEmployeeTable())
-        #     self.S.btnAdd.clicked.connect(lambda: self.loadLabels())
-        # elif u=="Delivery Man":
-        #     self.S=ManagerAddingNewDeliveryMan()
-        #     self.S.show()
-        #     self.S.btnAdd.clicked.connect(lambda : self.loadEmployeeTable())
-        #     self.S.btnAdd.clicked.connect(lambda: self.loadLabels())
+        elif u=="Sales Agent":
+            self.S=AddSaleAgentWindow()
+            self.S.show()
+            self.S.btnAdd.clicked.connect(lambda : self.loadEmployeeTable())
+            self.S.btnAdd.clicked.connect(lambda: self.loadLabels())
+        elif u=="Order Dispatcher":
+            self.S=AddOrderDispatcherWindow()
+            self.S.show()
+            self.S.btnAdd.clicked.connect(lambda : self.loadEmployeeTable())
+            self.S.btnAdd.clicked.connect(lambda: self.loadLabels())
+        elif u=="Delivery Man":
+            self.S=AddDeliveryManWindow()
+            self.S.show()
+            self.S.btnAdd.clicked.connect(lambda : self.loadEmployeeTable())
+            self.S.btnAdd.clicked.connect(lambda: self.loadLabels())
             
     def viewUser(self):
         self.tableAdminEmployees.setRowCount(0)
@@ -452,10 +466,9 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
                     roww = roww + 1
                     start = start.getNextNode()
     def addProduct(self):
-        pass
-        # self.addnewProduct = AddProductWindow()
-        # self.addnewProduct.show()
-        # self.addnewProduct.btnAdd.clicked.connect(lambda : self.loadTableProduct())
+        self.addnewProduct = AddProductWindow()
+        self.addnewProduct.show()
+        self.addnewProduct.btnAdd.clicked.connect(lambda : self.loadTableProduct())
     def editProduct(self):
         if(self.tableAdminProducts.currentRow() != None and self.tableAdminProducts.currentRow()>=0):
             row = self.tableAdminProducts.currentRow()
@@ -470,9 +483,9 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
             expiryDate = self.tableAdminProducts.item(row,8).text()
             
             p = product(name, Id, category, quantity, description, productionCost, salePrice, date, expiryDate)
-            # self.addnewProduct = EditProductWindow(p)
-            # self.addnewProduct.show()
-            # self.addnewProduct.btnAdd.clicked.connect(lambda : self.loadTableProduct())
+            self.addnewProduct = EditProductWindow(p)
+            self.addnewProduct.show()
+            self.addnewProduct.btnAdd.clicked.connect(lambda : self.loadTableProduct())
     def deleteProduct(self):
         if(self.tableAdminProducts.currentRow() != None and self.tableAdminProducts.currentRow()>=0):
             qm =QMessageBox
@@ -620,42 +633,42 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
             msg.exec_()
        
     def editEmployee(self):
-      if(self.tableAdminEmployees.currentRow() != None and self.tableAdminEmployees.currentRow()>=0):
-           row = self.tableAdminEmployees.currentRow()
-           role = self.tableAdminEmployees.item(row,1).text()       
-           Id = self.tableAdminEmployees.item(row,0).text()
-           userName = self.tableAdminEmployees.item(row,2).text()
-           name = self.tableAdminEmployees.item(row,3).text()
-           password = self.tableAdminEmployees.item(row,4).text()
-           cnic = self.tableAdminEmployees.item(row,5).text()
-           email = self.tableAdminEmployees.item(row,6).text()
-           cellNo = self.tableAdminEmployees.item(row,7).text()
-           dateCreated = self.tableAdminEmployees.item(row,8).text()          
-           vehicle= self.tableAdminEmployees.item(row,9).text()
-           salary = self.tableAdminEmployees.item(row,10).text()
-           if role=="Sales Agent":
-                s=salesMan(userName, password,role,name ,cnic ,email, cellNo,Id, dateCreated,vehicle,salary)
-                editWin=EditSaleAgentWindow(s)
+        
+        if(self.tableAdminEmployees.currentRow() != None and self.tableAdminEmployees.currentRow()>=0):
+             row = self.tableAdminEmployees.currentRow()
+             role = self.tableAdminEmployees.item(row,1).text()       
+             Id = self.tableAdminEmployees.item(row,0).text()
+             userName = self.tableAdminEmployees.item(row,2).text()
+             name = self.tableAdminEmployees.item(row,3).text()
+             password = self.tableAdminEmployees.item(row,4).text()
+             cnic = self.tableAdminEmployees.item(row,5).text()
+             email = self.tableAdminEmployees.item(row,6).text()
+             cellNo = self.tableAdminEmployees.item(row,7).text()
+             dateCreated = self.tableAdminEmployees.item(row,8).text()          
+             vehicle= self.tableAdminEmployees.item(row,9).text()
+             salary = self.tableAdminEmployees.item(row,10).text()
+             if role=="Sales Agent":
+                  s=salesMan(userName, password,role,name ,cnic ,email, cellNo,Id, dateCreated,vehicle,salary)
+                  editWin=EditSaleAgentWindow(s)
+                  editWin.show()
+                  self.S.btnSave.clicked.connect(lambda : self.loadEmployeeTable())
+             elif role=="Delivery Man":
+                  d=deliveryMan(userName, password,role,name ,cnic ,email, cellNo,Id, dateCreated,vehicle,salary)
+                  editWin=EditDeliveryManWindow(d)
+                  editWin.show()
+                  self.S.btnSave.clicked.connect(lambda : self.loadEmployeeTable())
+      
+             elif role=="Order Dispatcher":
+                o=orderDispatcher(userName, password,role,name ,cnic ,email, cellNo,Id, dateCreated,salary)
+                editWin=EditOrderDispatcherWindow(o)
                 editWin.show()
                 self.S.btnSave.clicked.connect(lambda : self.loadEmployeeTable())
-    
-           # elif role=="Delivery Man":
-           #     d=deliveryMan(userName, password,role,name ,cnic ,email, cellNo,Id, dateCreated,vehicle,salary)
-           #     editWin=ManagerEditDeliveryMan(d)
-           #     editWin.show()
-           #     self.S.btnSave.clicked.connect(lambda : self.loadEmployeeTable())
-    
-           # elif role=="Order Dispatcher":
-           #     o=orderDispatcher(userName, password,role,name ,cnic ,email, cellNo,Id, dateCreated,salary)
-           #     editWin=ManagerEditOrderDispacther(o)
-           #     editWin.show()
-           #     self.S.btnSave.clicked.connect(lambda : self.loadEmployeeTable())
-    
-           # elif role=="Manager":
-           #     m=manager(userName, password, role, name, cnic, email, cellNo, Id, dateCreated, salary)
-           #     editWin=EditManager(m)
-           #     editWin.show()
-           #     self.S.btnAdd.clicked.connect(lambda : self.loadEmployeeTable())
+      
+             elif role=="Manager":
+                  m=manager(userName, password, role, name, cnic, email, cellNo, Id, dateCreated, salary)
+                  editWin=EditManagerWindow(m)
+                  editWin.show()
+                  self.S.btnAdd.clicked.connect(lambda : self.loadEmployeeTable())
     def deleteEmployee(self):
       if(self.tableAdminEmployees.currentRow() != None and self.tableAdminEmployees.currentRow()>=0):
          qm =QMessageBox
@@ -731,11 +744,10 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
                 roww = roww + 1
                 start=start.getNextNode()
     def addVehicle(self):
-        pass
-        # self.newq=ManagerAddVehicle()
-        # self.newq.show()
-        # self.newq.btnAdd.clicked.connect(lambda:self.loadVehicleTable())
-        # self.loadLabels()
+        self.newq=AddVehicleWindow()
+        self.newq.show()
+        self.newq.btnAdd.clicked.connect(lambda:self.loadVehicleTable())
+        self.loadLabels()
         
     def editVehicle(self):
         if self.tableAdminEmployees_2.currentRow() != None and self.tableAdminEmployees_2.currentRow()>=0:
@@ -750,12 +762,12 @@ class AdminWindow(QMainWindow, Ui_MainWindow):
             price = self.tableAdminEmployees_2.item(row,6).text()
             datePresent = self.tableAdminEmployees_2.item(row,7).text()
             v = vehicle(Id,name,brand,category ,capacity, number,price, datePresent) 
-            # self.editVehicleWindow=ManagerEditVehicle(v)
-            # self.editVehicleWindow.show()
+            self.editVehicleWindow=EditVehicleWindow(v)
+            self.editVehicleWindow.show()
             # self.loadSaleAgentData()
             # salesManDL().addAllSalesmanToFile()
-            # self.editVehicleWindow.btnSave.clicked.connect(lambda:self.loadVehicleTable())
-            # self.editVehicleWindow.btnSave.clicked.connect(lambda:vehicleDL().addAllVehicleToFile("VehicleInfo.csv"))
+            self.editVehicleWindow.btnSave.clicked.connect(lambda:self.loadVehicleTable())
+            self.editVehicleWindow.btnSave.clicked.connect(lambda:vehicleDL().addAllVehicleToFile("VehicleInfo.csv"))
     def deleteVehicle(self):
         row = self.tableAdminEmployees_2.currentRow()
         print(row)

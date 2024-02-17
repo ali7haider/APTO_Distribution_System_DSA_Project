@@ -1202,4 +1202,4 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Assign Delivery Man"))
         item = self.tableAdminEmployees_3.horizontalHeaderItem(5)
         item.setText(_translate("MainWindow", "Confirm to Complete"))
-import resources2_rc
+import UI_Classes.resources2_rc

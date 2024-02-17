@@ -722,4 +722,4 @@ class Ui_MainWindow(object):
         self.cmbxVehicle.setItemText(2, _translate("MainWindow", "Car Honda 1200CC"))
         self.btnCancel.setText(_translate("MainWindow", "Cancel"))
         self.btnAdd.setText(_translate("MainWindow", "Add"))
-import resources_rc
+import UI_Classes.resources_rc

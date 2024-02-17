@@ -234,4 +234,4 @@ class Ui_MainWindow(object):
         self.label_80.setText(_translate("MainWindow", "Password"))
         self.btnCancel.setText(_translate("MainWindow", "Cancel"))
         self.btnAdd.setText(_translate("MainWindow", "Save"))
-import resources_rc
+import UI_Classes.resources_rc

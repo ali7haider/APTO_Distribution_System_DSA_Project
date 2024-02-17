@@ -32,7 +32,17 @@ import shutil
 from datetime import timedelta
 from UI_Classes.addSaleAgentWindow import AddSaleAgentWindow
 from UI_Classes.editSaleAgentWindow import EditSaleAgentWindow
+from UI_Classes.addVehicleWindow import AddVehicleWindow
+from UI_Classes.editVehicleWindow import EditVehicleWindow
 
+from UI_Classes.generateReportsWindow import GenerateReportsWindow
+from UI_Classes.changeUserNameOrPasswordWindow import ChangeUserNameOrPasswordWindow
+from UI_Classes.editProductWindow import EditProductWindow
+from UI_Classes.addProductWindow import AddProductWindow
+from UI_Classes.addOrderDispatcherWindow import AddOrderDispatcherWindow
+from UI_Classes.editProductWindow import EditProductWindow
+from UI_Classes.addDeliveryMenWindow import AddDeliveryManWindow
+from UI_Classes.editDeliveryMenWindow import EditDeliveryManWindow
 class ManagerWindow(QMainWindow,Ui_MainWindow):
     def __init__(self):
         super(ManagerWindow, self).__init__()
@@ -113,9 +123,8 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
         self.changeUserNameOrPassword.clicked.connect(lambda: self.changeUserNameAndPassword())
 
     def generateReportPage(self):
-         pass
-         # self.geneReport=GenerateReport()
-         # self.geneReport.show()    
+          self.geneReport=GenerateReportsWindow()
+          self.geneReport.show()    
 
     def loadReports(self):
         employees=["Sales Agent","Order Dispatcher","Delivery Man"]
@@ -226,9 +235,8 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
         self.txtCellNo.setEnabled(False)
         self.txtSalary.setEnabled(False)
     def changeUserNameAndPassword(self):
-        pass
-        # self.c=ChangeUserNamePassword()
-        # self.c.show()
+        self.c=ChangeUserNamePasswordWindow()
+        self.c.show()
         
         
         
@@ -266,10 +274,9 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
                 roww = roww + 1
                 start = start.getNextNode()
     def addProduct(self):
-        pass
-        # self.addnewProduct = AddProductWindow()
-        # self.addnewProduct.show()
-        # self.addnewProduct.btnAdd.clicked.connect(lambda : self.loadTableProduct())
+        self.addnewProduct = AddProductWindow()
+        self.addnewProduct.show()
+        self.addnewProduct.btnAdd.clicked.connect(lambda : self.loadTableProduct())
     def editProduct(self):
         if(self.tableAdminProducts.currentRow() != None and self.tableAdminProducts.currentRow()>=0):
             row = self.tableAdminProducts.currentRow()
@@ -284,9 +291,9 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
             expiryDate = self.tableAdminProducts.item(row,8).text()
             
             p = product(name, Id, category, quantity, description, productionCost, salePrice, date, expiryDate)
-            # self.addnewProduct = EditProductWindow(p)
-            # self.addnewProduct.show()
-            # self.addnewProduct.btnAdd.clicked.connect(lambda : self.loadTableProduct())
+            self.addnewProduct = EditProductWindow(p)
+            self.addnewProduct.show()
+            self.addnewProduct.btnAdd.clicked.connect(lambda : self.loadTableProduct())
     def deleteProduct(self):
         if(self.tableAdminProducts.currentRow() != None and self.tableAdminProducts.currentRow()>=0):
             qm =QMessageBox
@@ -441,11 +448,10 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
     
     #Order Dispatcher CRUD
     def addNewOrderDispatcher(self):
-        pass
-        # self.newq=ManagerAddingNewOrderDispacther()
-        # self.newq.show()
-        # self.newq.btnAdd.clicked.connect(lambda:self.loadOrderDispatcherData())
-        # self.loadingODLabels()
+        self.newq=AddOrderDispatcherWindow()
+        self.newq.show()
+        self.newq.btnAdd.clicked.connect(lambda:self.loadOrderDispatcherData())
+        self.loadingODLabels()
     def editOD(self):
         if(self.tableOrderDispatcherList.currentRow() != None and self.tableOrderDispatcherList.currentRow()>=0):
             row = self.tableOrderDispatcherList.currentRow()
@@ -461,12 +467,12 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
             dateCreated = self.tableOrderDispatcherList.item(row,8).text() 
             salary = self.tableOrderDispatcherList.item(row,9).text() 
             S = orderDispatcher(userName, password,role,name ,cnic ,email, cellNo,Id, dateCreated,salary)
-            # self.editODWindow=ManagerEditOrderDispacther(S)
-            # self.editODWindow.show()
+            self.editODWindow=EditOrderDispatcherWindow(S)
+            self.editODWindow.show()
             # # self.loadSaleAgentData()
             # # salesManDL().addAllSalesmanToFile()
-            # self.editODWindow.btnSave.clicked.connect(lambda:self.loadOrderDispatcherData())
-            # self.editODWindow.btnSave.clicked.connect(lambda:orderDispatcherDL().addAllODToFile("OrderDispatcherInfo.csv"))
+            self.editODWindow.btnSave.clicked.connect(lambda:self.loadOrderDispatcherData())
+            self.editODWindow.btnSave.clicked.connect(lambda:orderDispatcherDL().addAllODToFile("OrderDispatcherInfo.csv"))
     def deleteOD(self):
         row = self.tableOrderDispatcherList.currentRow()
         print(row)
@@ -551,11 +557,10 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
     
     #Delivery Man CRUD
     def addNewDM(self):
-        pass
-        # self.newq=ManagerAddingNewDeliveryMan()
-        # self.newq.show()
-        # self.newq.btnAdd.clicked.connect(lambda:self.loadDMData())
-        # self.loadingDMLabels()
+        self.newq=AddDeliveryManWindow()
+        self.newq.show()
+        self.newq.btnAdd.clicked.connect(lambda:self.loadDMData())
+        self.loadingDMLabels()
     def editDM(self):
         if(self.tableSaleAgentList_2.currentRow() != None and self.tableSaleAgentList_2.currentRow()>=0 ):
 
@@ -573,12 +578,12 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
             vehicle = self.tableSaleAgentList_2.item(row,9).text() 
             salary = self.tableSaleAgentList_2.item(row,10).text() 
             d = deliveryMan(userName, password,role,name ,cnic ,email, cellNo,Id, dateCreated,vehicle,salary)
-            # self.editDMWindow=ManagerEditDeliveryMan(d)
-            # self.editDMWindow.show()
+            self.editDMWindow=EditDeliveryManWindow(d)
+            self.editDMWindow.show()
             # # self.loadSaleAgentData()
             # # salesManDL().addAllSalesmanToFile()
-            # self.editDMWindow.btnSave.clicked.connect(lambda:self.loadDMData())
-            # self.editDMWindow.btnSave.clicked.connect(lambda:deliveryManDL().addAllDMToFile("DeliveryManInfo.csv"))    
+            self.editDMWindow.btnSave.clicked.connect(lambda:self.loadDMData())
+            self.editDMWindow.btnSave.clicked.connect(lambda:deliveryManDL().addAllDMToFile("DeliveryManInfo.csv"))    
     
     def deleteDM(self):
         row = self.tableSaleAgentList_2.currentRow()
@@ -665,12 +670,11 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
                 start=start.getNextNode()
     
    #Vehicle CRUD
-    def addVehicle(self):
-        pass
-        # self.newq=ManagerAddVehicle()
-        # self.newq.show()
-        # self.newq.btnAdd.clicked.connect(lambda:self.loadVehicleData())
-        # self.loadingVehicleLabels()
+    def addVehicle(self):    
+        self.newq=AddVehicleWindow()
+        self.newq.show()
+        self.newq.btnAdd.clicked.connect(lambda:self.loadVehicleData())
+        self.loadingVehicleLabels()
     def EditVehicle(self):
          
          if self.tableSaleAgentList_4.currentRow() != None and self.tableSaleAgentList_4.currentRow()>=0:
@@ -685,12 +689,12 @@ class ManagerWindow(QMainWindow,Ui_MainWindow):
              price = self.tableSaleAgentList_4.item(row,6).text()
              datePresent = self.tableSaleAgentList_4.item(row,7).text()
              v = vehicle(Id,name,brand,category ,capacity, number,price, datePresent) 
-             # self.editVehicleWindow=ManagerEditVehicle(v)
-             # self.editVehicleWindow.show()
+             self.editVehicleWindow=EditVehicleWindow(v)
+             self.editVehicleWindow.show()
              # # self.loadSaleAgentData()
              # # salesManDL().addAllSalesmanToFile()
-             # self.editVehicleWindow.btnSave.clicked.connect(lambda:self.loadVehicleData())
-             # self.editVehicleWindow.btnSave.clicked.connect(lambda:vehicleDL().addAllVehicleToFile("VehicleInfo.csv"))
+             self.editVehicleWindow.btnSave.clicked.connect(lambda:self.loadVehicleData())
+             self.editVehicleWindow.btnSave.clicked.connect(lambda:vehicleDL().addAllVehicleToFile("VehicleInfo.csv"))
     def deleteVehicle(self):
         row = self.tableSaleAgentList_4.currentRow()
         print(row)

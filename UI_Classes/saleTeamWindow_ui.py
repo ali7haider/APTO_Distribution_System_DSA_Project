@@ -1854,5 +1854,4 @@ class Ui_MainWindow(object):
         self.label_128.setText(_translate("MainWindow", "Password"))
         self.cmbx.setText(_translate("MainWindow", "Date"))
         self.btnAdd.setText(_translate("MainWindow", "Change User Name or Password"))
-import resources2_rc
-import resources_rc
+import UI_Classes.resources2_rc

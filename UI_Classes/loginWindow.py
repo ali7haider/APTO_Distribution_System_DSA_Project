@@ -14,7 +14,8 @@ from DL.ProductDL import productDL
 from BL.file_paths import FilePaths
 from UI_Classes.adminWindow import AdminWindow
 from UI_Classes.managerWindow import ManagerWindow
-from UI_Classes.orderDispatcher import OrderDispatcher
+from UI_Classes.orderDispatcherWindow import OrderDispatcherWindow
+from UI_Classes.saleTeamWindow import SaleTeamWindow
 
 
 class LoginWindow(QMainWindow, Ui_MainWindow):
@@ -54,5 +55,10 @@ class LoginWindow(QMainWindow, Ui_MainWindow):
             self.newq = ManagerWindow()
             self.newq.show()
         elif(role == "Order Dispatcher"):
-            self.OrderDispatcher = OrderDispatcher()
+            self.OrderDispatcher = OrderDispatcherWindow()
             self.OrderDispatcher.show()
+        elif(role == "Sales Agent"):
+            self.newq = SaleTeamWindow()
+            self.newq.show() 
+        elif(role == "Delivery Man"):
+            print("Delivery Man")

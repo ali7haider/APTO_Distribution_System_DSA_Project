@@ -8,9 +8,9 @@ import os
 from PyQt5.QtWidgets import QMainWindow
 from UI_Classes.changeUserNameOrPasswordWindow_ui import Ui_MainWindow
 from BL.file_paths import FilePaths
-class ChangeUserNamePasswordWindow(QMainWindow,Ui_MainWindow):
+class ChangeUserNameOrPasswordWindow(QMainWindow,Ui_MainWindow):
     def __init__(self):
-        super(ChangeUserNamePasswordWindow,self).__init__()
+        super(ChangeUserNameOrPasswordWindow,self).__init__()
         self.setupUi(self)
         self.file_paths = FilePaths(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Data')))  
         self.btnCancel.clicked.connect(lambda:self.close())

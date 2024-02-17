@@ -1,4 +1,4 @@
-from User import user
+from BL.User import user
 
 class shopkeeper(user):
     def __init__(self,userName,password,name,cnic,email,cellNo,Id,dateCreated

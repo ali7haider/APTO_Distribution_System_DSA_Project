@@ -6,15 +6,15 @@ Created on Sat Feb 17 18:16:46 2024
 """
 import os
 from PyQt5.QtWidgets import QMainWindow,QMessageBox
-from UI_Classes.SaleTeamWindow_ui import Ui_MainWindow
+from UI_Classes.saleTeamWindow_ui import Ui_MainWindow
 from DL.ProductDL import productDL
 from DL.OrderDL import orderDL
 
 from BL.file_paths import FilePaths
 from BL.User import user
-from BL.Order import order
+from BL.Orders import order
 
-from BL.ShopkeeperDL import shopkeeperDL
+from BL.Shopkeeper import shopkeeper
 from datetime import date
 from PyQt5.QtGui import QIntValidator
 from datetime import datetime
