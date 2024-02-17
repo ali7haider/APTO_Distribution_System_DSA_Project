@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1549</width>
-    <height>0</height>
+    <height>988</height>
    </rect>
   </property>
   <property name="cursor">
@@ -28,6 +28,21 @@ background-color : rb(47,149,141);
     <string notr="true"/>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
      <widget class="QFrame" name="frame">
       <property name="frameShape">
@@ -37,6 +52,9 @@ background-color : rb(47,149,141);
        <enum>QFrame::Raised</enum>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <property name="leftMargin">
         <number>0</number>
        </property>
@@ -745,7 +763,7 @@ color:#48ACAC
           <item>
            <widget class="QStackedWidget" name="stackedWidget">
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="managerDashboard">
              <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -11462,10 +11480,9 @@ color: white;
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="../../../UI/resources.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections/>
 </ui>
