@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ManagerWindow.ui'
+# Form implementation generated from reading ui file 'managerWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -311,7 +311,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/Icons/Icons/82614714-2d89-48a8-b9ae-637682530a9f.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon7.addPixmap(QtGui.QPixmap(":/Icons/Icons/Vehicle.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnManagerVehicle.setIcon(icon7)
         self.btnManagerVehicle.setIconSize(QtCore.QSize(35, 40))
         self.btnManagerVehicle.setObjectName("btnManagerVehicle")
@@ -4990,4 +4990,4 @@ class Ui_MainWindow(object):
         self.label_128.setText(_translate("MainWindow", "Password"))
         self.cmbx.setText(_translate("MainWindow", "Date"))
         self.changeUserNameOrPassword.setText(_translate("MainWindow", "Change User Name or Password"))
-import UI_Classes.resources_rc
+import UI_Classes.resources2_rc
